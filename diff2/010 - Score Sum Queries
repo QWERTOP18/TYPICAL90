@@ -1,0 +1,21 @@
+N = int(input())
+score1 = [0] * (N + 1)
+score2 = [0] * (N + 1)
+
+
+for i in range(N):
+    cl, sc = map(int,input().split())
+    if cl == 1:
+        score1[i + 1] += sc
+    else:
+        score2[i + 1] += sc
+    score1[i + 1] += score1[i]
+    score2[i + 1] += score2[i]
+
+
+Q = int(input())
+
+for _ in range(Q):
+    l, r = map(int,input().split())
+    l-=1
+    print(score1[r] - score1[l], score2[r] - score2[l])
